@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar Example</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Share Tech Mono', monospace;
+            color: white;
+            background-color: #141414;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #141414;
+            padding: 10px 20px;
+            color: white;
+        }
+
+        .navbar-logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-logo img {
+            width: 40px;
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .navbar-logo h1 {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .navbar-logo h1 .blue {
+            color: #007BFF;
+        }
+
+        .navbar-logo h1 .white {
+            color: white;
+        }
+
+        .content {
+            text-align: center;
+            margin-top: 10px;
+            background: linear-gradient(180deg, #000000, #007BFF);
+            padding: 50px 0;
+            height: auto;
+        }
+
+        .circle {
+            width: 50px;
+            height: 50px;
+            background-color: #007BFF;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+        }
+
+        .circle p {
+            font-size: 12px;
+            margin: 0;
+            color: white;
+        }
+
+        .headline {
+            font-size: 45px;
+            margin-top: 10px;
+            line-height: 1.6;
+            max-width: 750px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .headline .blue {
+            color: #007BFF;
+        }
+
+        .subtext {
+            font-size: 15.3px;
+            margin-top: 20px;
+            line-height: 1.5;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #a9a9a9;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: #a9a9a9;
+            background-color: transparent;
+            border: 2px solid #a9a9a9;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .button:hover {
+            color: white;
+            background-color: #007BFF;
+            border-color: #007BFF;
+            transform: scale(1.1);
+        }
+
+        .button-group {
+            margin-top: 25px;
+        }
+
+        .button-group a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 60px;
+            height: 60px;
+            background-color: #a9a9a9;
+            border-radius: 50%;
+            margin: 0 15px;
+            transition: all 0.3s ease;
+        }
+
+        .button-group a:hover {
+            background-color: #007BFF;
+            transform: scale(1.1);
+        }
+
+        .button-group a img {
+            width: 28px;
+            height: 28px;
+            filter: invert(1);
+        }
+
+        .footer-text {
+            margin-top: 65px;
+            font-size: 25.74px;
+            color: #a9a9a9;
+        }
+
+        .footer-text .blue {
+            color: #007BFF;
+        }
+
+        .cards-section {
+            background: linear-gradient(180deg, #007BFF, #141414);
+            padding: 50px 0;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            background-color: #007BFF;
+            transform: scale(1.05);
+        }
+
+        .card:hover h3,
+        .card:hover p {
+            color: black;
+        }
+
+        .card h3 {
+            font-size: 18px;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 14px;
+            color: #a9a9a9;
+            margin-bottom: 40px;
+        }
+
+        .card img {
+            width: 30px;
+            height: 30px;
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Mouse trail effect */
+        body::after {
+            content: '';
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            opacity: 0;
+            transition: opacity 0.2s ease;
+        }
+
+        body:hover::after {
+            opacity: 1;
+        }
+
+        body {
+            cursor: none;
+        }
+
+        body.add-trail::after {
+            animation: follow-cursor 0.3s ease forwards;
+        }
+
+        @keyframes follow-cursor {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+            }
+            100% {
+                transform: translate(var(--mouseX), var(--mouseY)) scale(0.7);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-logo">
+            <img src="https://via.placeholder.com/40" alt="Icon">
+            <h1><span class="blue">COD</span><span class="white">IUM</span></h1>
+        </div>
+    </nav>
+    <div class="content">
+        <div class="circle">
+            <p>AI</p>
+        </div>
+        <h1 class="headline"><span class="blue">COD</span>IUM: Cognitive Development and Optimization Unit for Intelligent Machines</h1>
+        <p class="subtext">CODIUM – это интеллектуальная платформа, разработанная для автоматизации и оптимизации создания программного обеспечения. Она объединяет искусственный интеллект с передовыми алгоритмами анализа кода.</p>
+        <a href="#" class="button">Learn more</a>
+        <div class="button-group">
+            <a href="https://t.me/yourtelegramgroup" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png" alt="Telegram Icon">
+            </a>
+            <a href="https://twitter.com" target="_blank">
+                <img src="https://cdn-icons-png.flaticon.com/512/5968/5968899.png" alt="X Icon">
+            </a>
+        </div>
+        <p class="footer-text">Made by <span class="blue">Future</span></p>
+    </div>
+    <div class="cards-section">
+        <div class="cards-container">
+            <div class="card">
+                <h3>Card Title 1</h3>
+                <p>This is a description for card 1.</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Icon 1">
+            </div>
+            <div class="card">
+                <h3>Card Title 2</h3>
+                <p>This is a description for card 2.</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Icon 2">
+            </div>
+            <div class="card">
+                <h3>Card Title 3</h3>
+                <p>This is a description for card 3.</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Icon 3">
+            </div>
+            <div class="card">
+                <h3>Card Title 4</h3>
+                <p>This is a description for card 4.</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Icon 4">
+            </div>
+            <div class="card">
+                <h3>Card Title 5</h3>
+                <p>This is a description for card 5.</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Icon 5">
+            </div>
+            <div class="card">
+                <h3>Card Title 6</h3>
+                <p>This is a description for card 6.</p>
+                <img src="https://cdn-icons-png.flaticon.com/512/847/847969.png" alt="Icon 6">
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('mousemove', (event) => {
+            const trail = document.createElement('div');
+            trail.style.position = 'absolute';
+            trail.style.width = '10px';
+            trail.style.height = '10px';
+            trail.style.backgroundColor = 'white';
+            trail.style.borderRadius = '50%';
+            trail.style.left = `${event.pageX}px`;
+            trail.style.top = `${event.pageY}px`;
+            trail.style.pointerEvents = 'none';
+            trail.style.opacity = '1';
+            trail.style.transition = 'opacity 0.5s ease-out, transform 0.5s ease-out';
+            trail.style.transform = 'scale(1)';
+            document.body.appendChild(trail);
+    
+            setTimeout(() => {
+                trail.style.opacity = '0';
+                trail.style.transform = 'scale(0.5)';
+            }, 50);
+    
+            setTimeout(() => {
+                trail.remove();
+            }, 500);
+        });
+    </script>
+    
+</body>
+</html>
