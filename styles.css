@@ -1,8 +1,9 @@
 body {
-	margin: 0;
-	font-family: 'Share Tech Mono', monospace;
-	color: white;
-	background-color: #141414;
+    margin: 0;
+    font-family: 'Share Tech Mono', monospace;
+    color: white;
+    background-color: #141414;
+    text-align: center;
 }
 
 .navbar {
@@ -141,7 +142,7 @@ body {
 }
 
 .footer-text .blue {
-	color: #007BFF;
+	color: #02264d;
 }
 
 .cards-section {
@@ -310,3 +311,126 @@ body.add-trail::after {
     border: 2px solid #007BFF;
 }
 
+
+/* Стили для плавного появления секций */
+section, .content, .cards-section, .mission-section, .token-metrics-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+section.visible, .content.visible, .cards-section.visible, .mission-section.visible, .token-metrics-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+
+    .navbar {
+        flex-direction: column;
+        padding: 15px;
+        text-align: center;
+    }
+
+    .navbar-logo img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .navbar-logo h1 {
+        font-size: 1.5rem;
+    }
+
+    .content {
+        padding: 20px;
+        text-align: center;
+        margin-top: 15px;
+    }
+
+    .circle {
+        width: 40px;
+        height: 40px;
+    }
+
+    .headline {
+        font-size: 1.8rem;
+        line-height: 1.4;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .subtext {
+        font-size: 1rem;
+        line-height: 1.5;
+        padding: 0 15px;
+    }
+
+    .button {
+        font-size: 0.9rem;
+        padding: 10px;
+        margin: 15px 0;
+        width: 90%;
+        max-width: 300px;
+    }
+
+    .button-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+	.cards-section {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Две карточки в строке */
+        gap: 15px; /* Расстояние между карточками */
+        padding: 10px; /* Отступы от краев секции */
+        justify-content: center; /* Центрирование карточек */
+    }
+
+    .card {
+        width: 90%; /* Автоматическое управление шириной карточки */
+        max-width: 80px; /* Ограничение максимальной ширины */
+        margin: 0 auto; /* Центрирование карточек в своих колонках */
+    }
+	
+
+    .mission-section {
+        padding: 30px 20px;
+    }
+
+    .mission-title {
+        font-size: 1.8rem;
+    }
+
+    .mission-text {
+        font-size: 1rem;
+        padding: 0 15px;
+    }
+
+    .mission-applications {
+        font-size: 0.9rem;
+    }
+
+    .token-metrics-section {
+        padding: 30px 20px;
+    }
+
+    .large-card {
+        width: 90%;
+        padding: 20px;
+        margin: 0 auto;
+    }
+
+    .small-cards-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .small-card {
+        font-size: 0.9rem;
+        padding: 10px;
+    }
+}
